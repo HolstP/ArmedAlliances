@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 478ce5ae2d6145b489316d52fd7ea047
+timeCreated: 1453524361
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Button_Idle
+    21300002: Button_Hover
+    21300004: Button_Press
+    21300006: Degradado
+    21300008: Blue_Box
+    21300010: Red_Box
+    21300012: Right_Degradado
+    21300014: Top_Bar
+    21300016: Box_Neutral
+    21300018: AmmoIcon
+    21300020: Health_Icon
+    21300022: SimpleBox
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Button_Idle
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 685
+        width: 116
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Button_Hover
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 645
+        width: 116
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Button_Press
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 605
+        width: 116
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Degradado
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 562
+        width: 115
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue_Box
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 517
+        width: 116
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Red_Box
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 473
+        width: 116
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Right_Degradado
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 432
+        width: 112
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Top_Bar
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 686
+        width: 201
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Box_Neutral
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 390
+        width: 116
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: AmmoIcon
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 553
+        width: 146
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Health_Icon
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 344
+        width: 182
+        height: 195
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SimpleBox
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 393
+        width: 119
+        height: 118
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

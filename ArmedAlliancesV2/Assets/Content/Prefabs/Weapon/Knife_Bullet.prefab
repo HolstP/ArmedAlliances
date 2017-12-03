@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
+  - component: {fileID: 8200000}
+  m_Layer: 0
+  m_Name: Knife_Bullet
+  m_TagString: Projectile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.1944184, y: -10.204649, z: 25.388603}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94780aa9e837d04f9b225851664d0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirectionFrom: {x: 0, y: 0, z: 0}
+  isNetwork: 0
+  GunName: 
+  isTracer: 0
+  AudioReferences: {fileID: 0}
+  ConcreteSound: {fileID: 0}
+  MetalSound: {fileID: 0}
+  GenericSound: {fileID: 0}
+  WoodSound: {fileID: 0}
+  WaterSound: {fileID: 0}
+  mPicht: {x: 1, y: 1.5}
+  bulletHoleObject: {fileID: 100000, guid: 5c2de0c5d7c30204691a058aa2289fbf, type: 2}
+  concrete:
+  - {fileID: 2800000, guid: 6d339623c4076458fb87aaf3c2db7aba, type: 3}
+  - {fileID: 2800000, guid: 415a7744fc8484894a5683b107774231, type: 3}
+  - {fileID: 2800000, guid: d6a27947e6f834cbda53d93a4c232a21, type: 3}
+  wood:
+  - {fileID: 2800000, guid: b1f77b08cf54a4e3a87df7976db03d56, type: 3}
+  - {fileID: 2800000, guid: 1b23f61f842224c0a8009262b3795270, type: 3}
+  - {fileID: 2800000, guid: f242837d5ad50492e89498621082cd85, type: 3}
+  metal:
+  - {fileID: 2800000, guid: 07006351bb1b9446bb309c7b786914aa, type: 3}
+  - {fileID: 2800000, guid: b5dc06d06c60d42e787abd2b21479499, type: 3}
+  - {fileID: 2800000, guid: a19c7f251790f4dc7b64a20d750dcbaf, type: 3}
+  oldMetal:
+  - {fileID: 2800000, guid: b1bf83a354d874268a8ac305e95c114c, type: 3}
+  - {fileID: 2800000, guid: feb9dc84bae4446a5b7ec5b7970f6544, type: 3}
+  - {fileID: 2800000, guid: 82ed4e09899d24476a830b6737b90057, type: 3}
+  glass:
+  - {fileID: 2800000, guid: 7ae869a1549c14e239ebbfb4da1e4527, type: 3}
+  - {fileID: 2800000, guid: 2d9bb817425d541ec99a499d46fa68a8, type: 3}
+  - {fileID: 2800000, guid: c165d79fe6a434d7599d1ea1a22e6854, type: 3}
+  generic:
+  - {fileID: 2800000, guid: 44e70d04dd1c544fbb4bd05c17ce1828, type: 3}
+  - {fileID: 2800000, guid: e4180c9a47d97482c987c3911e8ab463, type: 3}
+  - {fileID: 2800000, guid: c2369109aa61a4ec5ac1f9ff624892ba, type: 3}
+  - {fileID: 2800000, guid: d60932066a87249f181f2752e5aea807, type: 3}
+  woodParticle: {fileID: 100002, guid: 5a5ba7087d2b9b8479ef1d33b99d6d7f, type: 2}
+  metalParticle: {fileID: 100002, guid: cc6e9d702265cf943af458c466ac6a5b, type: 2}
+  concreteParticle: {fileID: 100002, guid: 6fc3b8efeea91e747a298ef01c3fc232, type: 2}
+  sandParticle: {fileID: 100002, guid: 6a195317fba3cbe4080ecd04dba3c710, type: 2}
+  waterParticle: {fileID: 100004, guid: e99137a1440aaf64ba7db29875b150b0, type: 2}
+  genericParticle: {fileID: 100000, guid: 2454749ab709aa34a95c6c4b0580e227, type: 2}
+  bloodParticle: {fileID: 100000, guid: ed36e720c8ba04f4da50635716890770, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
