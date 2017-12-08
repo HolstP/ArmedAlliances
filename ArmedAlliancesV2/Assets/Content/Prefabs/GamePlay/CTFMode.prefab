@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 11400002}
   m_Layer: 2
-  m_Name: FlatDelta
+  m_Name: FlagDelta
   m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 11400006}
   - component: {fileID: 11400008}
   m_Layer: 2
-  m_Name: FlatRecon
+  m_Name: FlagRecon
   m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
