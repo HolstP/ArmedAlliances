@@ -17,6 +17,7 @@ public class bl_WeaponsUI : MonoBehaviour {
     //Private 
     //UI Unity 4.6
     private Text AmmoTextUI = null;
+    private Text weaponNameText = null;
     private bl_Gun CurrentGun;
     private bl_GunManager GManager;
     private float BulletLeft;
@@ -32,6 +33,7 @@ public class bl_WeaponsUI : MonoBehaviour {
     {
         GManager = this.GetComponent<bl_GunManager>();
         AmmoTextUI = GameObject.Find("AmmoText").GetComponent<Text>();
+        weaponNameText = GameObject.Find("WeaponName (Text)").GetComponent<Text>();
     }
     /// <summary>
     /// 
@@ -85,6 +87,11 @@ public class bl_WeaponsUI : MonoBehaviour {
                 AmmoTextUI.text = "-- / <size=8>--</size>";
             }
             AmmoTextUI.color = m_color;
+        }
+
+        if (weaponNameText != null)
+        {
+            weaponNameText.text = CurrentGun.GunName;
         }
 
         if (Noti_Time.Count > 0)

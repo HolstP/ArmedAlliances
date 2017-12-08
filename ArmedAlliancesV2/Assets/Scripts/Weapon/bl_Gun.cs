@@ -1,12 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-// bl_Gun.cs
-//
-// This script Charge of the logic of arms
-// place it on a GameObject in the root of gun model
-//
-//                        Lovatto Studio
-////////////////////////////////////////////////////////////////////////////////
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -121,10 +113,6 @@ public class bl_Gun : MonoBehaviour
     //Network Parts 
     public bool localPlayer = true; //set to false // Am I a local player... or networked
     public string localPlayerName = "";            // what's my name
-    private Slider m_AmmoSlider = null;
-    private float SliderFactor = 3.7f;
-    private Text TypeFireText = null;
-    private string s_TypeFire = "Full";
     private bl_Crosshair Cross;
     private bool activeGrenade = true;
     private bool alreadyKnife = false;
@@ -159,7 +147,6 @@ public class bl_Gun : MonoBehaviour
         DefaultAmountSway = SwayGun.amount;
         DeafultSmoothSway_ = SwayGun.smooth;
         CanAim = true;
-        TypeFireText = GameObject.Find("FireTypeText").GetComponent<Text>(); //Get the Text for show bullet of scene
         if (muzzleFlash)
         {
             muzzleFlash.gameObject.SetActive(false);
@@ -199,14 +186,6 @@ public class bl_Gun : MonoBehaviour
         else
         {
             spread -= decreaseSpreadPerSec; // gun regains accuracy when trigger is released
-        }
-        if (m_AmmoSlider != null)
-        {
-            if (m_AmmoSlider.value != bulletsLeft)
-            {
-                m_AmmoSlider.value = Mathf.Lerp(m_AmmoSlider.value, bulletsLeft, Time.deltaTime * SliderFactor);
-            }
-            //m_AmmoSlider.value = bulletsLeft;                
         }
         //===========================================================================================
         return true;
@@ -306,15 +285,6 @@ public class bl_Gun : MonoBehaviour
         {
             StartCoroutine(reload());
         }
-        if (typeOfGun == weaponType.Machinegun || typeOfGun == weaponType.Burst || typeOfGun == weaponType.Pistol)
-        {
-            ChangeTypeFire();
-            TypeFireText.text = s_TypeFire.ToUpper();
-        }
-        else
-        {
-            TypeFireText.text = "SINGLE";
-        }
         //used to decrease weapon accuracy as long as the trigger remains down =====================
         if (typeOfGun != weaponType.Launcher && typeOfGun != weaponType.Knife)
         {
@@ -350,41 +320,7 @@ public class bl_Gun : MonoBehaviour
            
         }
     }
-    /// <summary>
-    /// change the type of gun gust
-    /// </summary>
-    void ChangeTypeFire()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            switch (typeOfGun)
-            {
-                case weaponType.Machinegun:
-                    typeOfGun = weaponType.Burst;
-                    if (TypeFireText != null)
-                    {
-                        s_TypeFire = "Semi";
-                    }
-                    break;
-                case weaponType.Burst:
-                    typeOfGun = weaponType.Pistol;
-                    if (TypeFireText != null)
-                    {
-                        s_TypeFire = "Single";
-                    }
-                    break;
-                case weaponType.Pistol:
-                    typeOfGun = weaponType.Machinegun;
-                    if (TypeFireText != null)
-                    {
-                        s_TypeFire = "Full";
-                    }
-                    break;
-            }
-            Source.clip = ReloadSound;//create a custom swicht sound
-            Source.Play();
-        }
-    }
+
     /// <summary>
     /// Sync Weapon state for Upper animations
     /// </summary>
@@ -1289,11 +1225,6 @@ public class bl_Gun : MonoBehaviour
         CanAim = true;
         bl_EventHandler.OnKitAmmo += this.OnPickUpAmmo;
         bl_EventHandler.OnRoundEnd += this.OnRoundEnd;
-        m_AmmoSlider = GameObject.Find("AmmoSlider").GetComponent<Slider>();
-        if (m_AmmoSlider != null)
-        {
-            m_AmmoSlider.maxValue = bulletsPerClip;
-        }
         Cross.movementScale = CrossHairScale;
     }
 

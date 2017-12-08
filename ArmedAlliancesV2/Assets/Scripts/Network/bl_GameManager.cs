@@ -47,9 +47,6 @@ public class bl_GameManager : bl_PhotonHelper {
     /// Spawn Points for TDM Team2
     /// </summary>
     private List<Transform> DeltaSpawnPoint = new List<Transform>();
-    [Space(5)]
-    public GameObject KillZoneUI = null;
-    public static GameObject KillZone = null;
 
     /// <summary>
     /// 
@@ -58,7 +55,6 @@ public class bl_GameManager : bl_PhotonHelper {
     {
         PhotonNetwork.isMessageQueueRunning = true;
         SuicideCount = 0;
-        KillZone = KillZoneUI;
     }
 
     /// <summary>

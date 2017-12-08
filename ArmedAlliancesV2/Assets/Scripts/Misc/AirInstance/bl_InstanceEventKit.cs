@@ -48,8 +48,6 @@ public class bl_InstanceEventKit : MonoBehaviour
 
     void Start()
     {
-        m_KitIcon = GameObject.Find("ClassIcon").GetComponent<Image>();
-        m_KitAmountText = GameObject.Find("ClassAmmoCount").GetComponent<Text>();
         m_class = bl_RoomMenu.m_playerclass;
     }
 	// Update is called once per frame

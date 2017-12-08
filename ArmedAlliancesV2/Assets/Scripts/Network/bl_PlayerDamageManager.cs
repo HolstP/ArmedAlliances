@@ -1,11 +1,4 @@
-﻿//////////////////////////////////////////////////////////////////////////////
-// bl_PlayerDamageManager.cs
-//
-// this contains all the logic of the player health
-// This is enabled locally or remotely
-//                      Lovatto Studio
-/////////////////////////////////////////////////////////////////////////////
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using Hashtable = ExitGames.Client.Photon.Hashtable; //Replace default Hashtables with Photon hashtables
 using UnityEngine.UI;
@@ -77,7 +70,6 @@ public class bl_PlayerDamageManager : bl_PhotonHelper
     public Vector2 RandomScore = new Vector2(40, 50);
     private Quaternion CurrentCamRot = Quaternion.identity;
     private Quaternion DefaultCamRot = Quaternion.identity;
-    private Text HealthTextUI;
     private Slider m_HealthSlider = null;
     private float m_SliderFactor = 3.7f;
     const string FallMethod = "FallDown";
@@ -100,7 +92,6 @@ public class bl_PlayerDamageManager : bl_PhotonHelper
             {
                 DefaultCamRot = Camera.main.transform.localRotation;
             }
-            HealthTextUI = GameObject.Find("HealthText").GetComponent<Text>();// get UI Text in Start
             m_HealthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         }
 
@@ -166,10 +157,6 @@ public class bl_PlayerDamageManager : bl_PhotonHelper
             if (Camera.main != null)//Return smooth camera rotation when shake
             {
                 Camera.main.transform.localRotation = Quaternion.Lerp(Camera.main.transform.localRotation, CurrentCamRot, Time.deltaTime * ShakeSmooth);
-            }
-            if (HealthTextUI != null)
-            {
-                HealthTextUI.text = bl_UtilityHelper.GetThreefoldChar(health) + "/<size=12>" + maxHealth + "</size>";
             }
             if (m_HealthSlider != null)
             {

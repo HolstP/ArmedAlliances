@@ -108,13 +108,17 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &680751571
+--- !u!1001 &972394579
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400002, guid: f594b14f498bf4744ae89d213732e723, type: 2}
+      propertyPath: m_scenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f594b14f498bf4744ae89d213732e723, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -155,13 +159,22 @@ Prefab:
       propertyPath: instantiationId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f594b14f498bf4744ae89d213732e723, type: 2}
+      propertyPath: m_scenes.Array.data[1].m_name
+      value: DevScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f594b14f498bf4744ae89d213732e723, type: 2}
+      propertyPath: m_scenes.Array.data[1].m_SceneName
+      value: DevScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f594b14f498bf4744ae89d213732e723, type: 2}
+      propertyPath: m_scenes.Array.data[1].m_Preview
+      value: 
+      objectReference: {fileID: 21300000, guid: 6566c02619a33c04b83af91ef6aa5026,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f594b14f498bf4744ae89d213732e723, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &898345068 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 155166, guid: f594b14f498bf4744ae89d213732e723, type: 2}
-  m_PrefabInternal: {fileID: 680751571}
 --- !u!1 &1410337337
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 898345068}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1410337341
