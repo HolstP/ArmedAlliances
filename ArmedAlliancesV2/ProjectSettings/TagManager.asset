@@ -5,6 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - WeaponsManager
+  - GameManager
+  - BodyPart
+  - WeaponManager
+  - Projectile
+  - WeaponCam
+  - Enemy
+  - Flag
+  - Remote
+  - ItemManager
+  - ItemManager
+  - Ladder
+  - Concrete
+  - Metal
   layers:
   - Default
   - TransparentFX
@@ -14,7 +27,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Weapons
   - 
   - 
   - 
