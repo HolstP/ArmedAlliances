@@ -1258,7 +1258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100156
 GameObject:
   m_ObjectHideFlags: 1
@@ -6386,7 +6386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100922
 GameObject:
   m_ObjectHideFlags: 1
@@ -20118,11 +20118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61b73e931a68d54ab8997d513c67248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrouchKey: 6300000031010000
-  RunKey: 2f01000030010000
+  CrouchKey: 32010000
+  RunKey: 30010000
   JumpKey: 20000000
   SuperJumpKey: 20000000
-  ForwardKey: 7700000011010000
+  ForwardKey: 77000000
   ToggleCrouch: 0
   crouchSpeed: 2
   walkSpeed: 4

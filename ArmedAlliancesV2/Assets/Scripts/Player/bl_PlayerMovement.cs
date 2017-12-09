@@ -1,8 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-//////////////////// bl_PlayerMovement.cs///////////////////////////////////////  
-////////////////////Local motion controller player )////////////////////////////
-////////////////////////////////Briner Games////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 using UnityEngine;
 using System.Collections;
 
@@ -17,11 +12,7 @@ public class bl_PlayerMovement : MonoBehaviour
     public KeyCode[] CrouchKey = new KeyCode[] { KeyCode.C,KeyCode.RightControl };
     public KeyCode[] RunKey = new KeyCode[] { KeyCode.RightShift,KeyCode.LeftShift };
     public KeyCode[] JumpKey = new KeyCode[] {KeyCode.Space };
-    public KeyCode[] SuperJumpKey = new KeyCode[] { KeyCode.Space };
     public KeyCode[] ForwardKey = new KeyCode[] { KeyCode.W,KeyCode.UpArrow };
-    /*public KeyCode[] BackWardKey = new KeyCode[] { KeyCode.S, KeyCode.DownArrow };
-    public KeyCode[] RightKey = new KeyCode[] { KeyCode.D, KeyCode.RightArrow };
-    public KeyCode[] LeftKey = new KeyCode[] { KeyCode.A, KeyCode.LeftArrow };*/
     public bool ToggleCrouch = false;
     [Header("Movement")]
     public float crouchSpeed = 2;
@@ -34,16 +25,6 @@ public class bl_PlayerMovement : MonoBehaviour
     public float gravity = 20.0f;
     public float speed;
     public float ladderJumpSpeed = 5f;
-    [Space(5)]
-    [Header("SuperJump")]
-    //Can the player take a super jump
-    public bool CanSuperJump = true;
-    public float SecondJumpDelay = 0.2f;
-    public bool BoostMovement = true;
-    public Vector2 AirControlFactor = new Vector2(0.75f, 1.23f);
-    public float SuperJumpSpeed = 14.0f;
-    public AudioSource BoostSource = null;
-    public AudioClip SuperJumpSound;
     [Space(5)]
     [Header("Others")]
     // If the player ends up on a slope which is at least the Slope Limit as set on the character controller, then he will slide down
@@ -87,7 +68,6 @@ public class bl_PlayerMovement : MonoBehaviour
     private float rayDistance;
     private bool playerControl = false;
     private int jumpTimer;
-    private bool canSecond = false;
     private float fallDistance;
     [HideInInspector]
     public int state = 0;
@@ -102,7 +82,6 @@ public class bl_PlayerMovement : MonoBehaviour
     private float normalHeight = 0.7f;
     private float crouchHeight = 0.0f;
     private float m_HPoint;
-    private bool isSuperJump = false;
     [HideInInspector]public Vector3 vel = Vector3.zero;
     [HideInInspector]public float velMagnitude;
 
@@ -169,8 +148,6 @@ public class bl_PlayerMovement : MonoBehaviour
             if (grounded)
             {
                 bool sliding = false;
-                canSecond = false;
-                isSuperJump = false;
                 // See if surface immediately below should be slid down. We use this normally rather than a ControllerColliderHit point,
                 // because that interferes with step climbing amongst other annoyances
                 if (Physics.Raycast(myTransform.position, -Vector3.up, out hit, rayDistance))
@@ -262,15 +239,10 @@ public class bl_PlayerMovement : MonoBehaviour
                     moveDirection = myTransform.TransformDirection(moveDirection);
                     moveDirection *= speed;
 
-                    if (isJumpKeyDown && jumpTimer >= antiBunnyHopFactor && !canSecond)
+                    if (isJumpKeyDown && jumpTimer >= antiBunnyHopFactor)
                     {
                         jumpTimer = 0;
                         moveDirection.y = jumpSpeed;
-                        isSuperJump = false;
-                        if (CanSuperJump)
-                        {
-                            StartCoroutine(secondJump());
-                        }
                         if (state > 0)
                         {
                             CheckDistance();
@@ -307,27 +279,6 @@ public class bl_PlayerMovement : MonoBehaviour
                     moveDirection.x = inputX * speed * inputModifyFactor;
                     moveDirection.z = inputY * speed * inputModifyFactor;
                     moveDirection = myTransform.TransformDirection(moveDirection);
-                }
-                if (isSuperJumpKeyDown && canSecond && CanSuperJump)
-                {
-                    jumpTimer = 0;
-                    moveDirection.y = SuperJumpSpeed;
-                    canSecond = false;
-                    isSuperJump = true;
-                    bl_EventHandler.OnSmallImpactEvent();
-                    if (SuperJumpSound && GetComponent<AudioSource>() != null)
-                    {
-                        GetComponent<AudioSource>().clip = SuperJumpSound;
-                        GetComponent<AudioSource>().Play();
-                    }
-                    if (state > 0)
-                    {
-                        CheckDistance();
-                        if (distanceToObstacle > 1.6f)
-                        {
-                            state = 0;
-                        }
-                    }
                 }
             }
             if (ToggleCrouch)
@@ -381,21 +332,6 @@ public class bl_PlayerMovement : MonoBehaviour
                 grounded = (controller.Move(moveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
             }
         }
-        //When is super jump / jet pack, whe have more forced in moved
-        if (BoostMovement && CanSuperJump && isSuperJump && !grounded)
-        {
-            AirControl();
-        }
-        else
-        {
-            if (BoostSource != null)
-            {
-                if (BoostSource.isPlaying)
-                {
-                    BoostSource.Stop();
-                }
-            }
-        }
     }
     /// <summary>
     /// 
@@ -412,38 +348,7 @@ public class bl_PlayerMovement : MonoBehaviour
 
         mRig.AddForce(hit.moveDirection * PushPower, ForceMode.Impulse);
     }
-    /// <summary>
-    /// Player Control / Boost Movement when is super jump
-    /// </summary>
-    void AirControl()
-    {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
-        float inputModifyFactor = (inputX != 0 && inputY != 0) ? AirControlFactor.y : AirControlFactor.x;
-        moveDirection.x = inputX * speed * inputModifyFactor;
-        moveDirection.z = inputY * speed * inputModifyFactor;
-        moveDirection = myTransform.TransformDirection(moveDirection);
 
-        if (BoostSource != null)
-        {
-            if (BoostSource.clip == null)
-            {
-                BoostSource.clip = SuperJumpSound;
-            }
-            float t = (inputX + inputY) / 2;
-            if (t < 0)
-            {
-                t = t * -1;
-            }
-            float mVolumen = BoostSource.volume;
-            mVolumen = Mathf.Lerp(mVolumen, t, Time.deltaTime * 3);
-            BoostSource.volume = mVolumen;
-            if (BoostSource != null && !BoostSource.isPlaying)
-            {
-                BoostSource.Play();
-            }
-        }
-    }
     /// <summary>
     /// When player is Walk,Run or Idle
     /// </summary>
@@ -608,21 +513,6 @@ public class bl_PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool isSuperJumpKeyDown
-    {
-        get
-        {
-            for (int i = 0; i < SuperJumpKey.Length; i++)
-            {
-                if (Input.GetKeyDown(SuperJumpKey[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -645,15 +535,5 @@ public class bl_PlayerMovement : MonoBehaviour
     void OnRoundEnd()
     {
         this.enabled = false;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator secondJump()
-    {
-        yield return new WaitForSeconds(SecondJumpDelay);
-        canSecond = true;
     }
 }
